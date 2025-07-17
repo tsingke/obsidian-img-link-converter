@@ -1,74 +1,76 @@
-# Obsidian Image Link Converter
+# Obsidian 图像链接转换工具
 
-A lightweight Python script to convert Obsidian-style image wiki links `![[image.png]]` to standard Markdown format `![](path/image.png)` and rename image files by replacing spaces with hyphens.
-
-This tool enhances Markdown document compatibility across editors like Typora, VS Code, and GitHub.
+一个轻量级 Python 脚本，支持将 Obsidian 中使用的图片 Wiki 链接语法 `![[图片.png]]` 转换为标准 Markdown 格式 `![](路径/图片.png)`，同时自动将图像文件名中的空格替换为中划线，提升跨平台兼容性，适用于 Typora、VS Code、GitHub 等工具。
 
 ---
 
-## Features
+## 功能特点
 
-- Prompt user to enter the image folder path dynamically
-- Automatically rename image files containing spaces
-- Convert Obsidian wiki-style image links to standard Markdown syntax
-- Recursively process all `.md` files
-- Prevent filename collisions with auto-numbering
-- Supports common image formats: png, jpg, jpeg, gif, bmp, svg, webp, tiff
+- 支持用户手动输入图像目录路径，灵活适配不同 Obsidian 仓库结构
+- 自动重命名图片文件（空格 → 中划线），防止链接失效
+- 将 Obsidian 的 `![[...]]` 语法转换为标准 Markdown 图片链接
+- 递归处理所有 Markdown 文件（.md）
+- 避免图像重名冲突，自动追加后缀编号
+- 支持多种图片格式：png, jpg, jpeg, gif, bmp, svg, webp, tiff
 
 ---
 
-## Usage
+## 使用方法
 
-### 1. Requirements
+### 1. 准备工作
 
-- Python 3.6+
-- Works on Windows, macOS, Linux
+确保你已安装 Python 3.6 或以上版本。
 
-Place `convert_enhanced.py` in the root directory of your Obsidian vault.
+将 `convert_enhanced.py` 脚本文件复制到你的 Obsidian 仓库根目录。
 
-### 2. Run the Script
+### 2. 运行脚本
+
+打开终端，进入仓库目录，运行命令：
 
 ```bash
 python3 convert_enhanced.py
 ```
 
-When prompted, enter the image folder path relative to the current directory. For example:
+根据提示输入图片文件所在目录的相对路径，例如：
 
 ```
-Please enter the image folder path (relative to current directory): assets/images
+请输入图像文件所在目录（相对于当前目录）：附件/图片
 ```
 
-The script will:
+脚本将自动：
 
-- Rename image files containing spaces
-- Scan Markdown files and replace image links
-- Log all progress to the terminal
+- 重命名含空格的图片文件
+- 扫描 Markdown 文件并替换图片链接
+- 输出处理日志信息
 
 ---
 
-## Example
+## 示例
 
-**Before:**
+**处理前 Markdown 内容：**
 
 ```markdown
-![[diagram 1.png]]
+![[图表 1.png]]
 ```
 
-**After:**
+**处理后内容：**
 
 ```markdown
-![](assets/images/diagram-1.png)
+![](附件/图片/图表-1.png)
 ```
 
----
-
-## Notes
-
-- This script modifies files in-place. Back up your vault before use.
-- Recursively processes all subdirectories.
+同时，图片文件也被重命名为 `图表-1.png`。
 
 ---
 
-## License
+## 注意事项
 
-This project is licensed under the MIT License.
+- 请在首次运行前备份你的仓库以防意外。
+- 当前版本会直接覆盖原始 `.md` 文件。
+- 支持递归子目录处理。
+
+---
+
+## 开源许可
+
+本项目使用 MIT 开源许可证，欢迎自由使用和二次开发。
